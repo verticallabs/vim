@@ -1,7 +1,8 @@
 call pathogen#infect()
 call pathogen#helptags()
 
-set rtp^=~/tools/vim
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
+
 set hidden
 set number
 set tabstop=2
@@ -23,7 +24,7 @@ set smartcase
 set path=.,/usr/include,**
 set directory=/tmp
 set nocompatible
-set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+"set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set noerrorbells visualbell t_vb=
 set nofoldenable
 
@@ -37,9 +38,8 @@ end
 syntax on
 filetype plugin on
 filetype plugin indent on
-au BufNewFile,BufRead *.js set filetype=javascript
 au BufNewFile,BufRead *.md set filetype=text
-au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim 
+au BufNewFile,BufRead *.js set filetype=javascript
 au! BufWritePost vimrc so %
 au! BufWritePost .vimrc so %
 
@@ -67,20 +67,18 @@ endfunction
 "map <silent> <Leader>. :bn<Enter>
 "map <silent> <Leader>, :bp<Enter>
 "map <Leader>f :e **/*
-map <C-k> :e **/*
-imap <C-k> <Esc>:e **/*
+"map <silent> <C-l> <Esc>:set hlsearch<Enter>:set incsearch<Enter>:enew<Enter>:setlocal buftype=nofile<Enter>:set nobuflisted<Enter>:%!file_list<Enter><Esc>
+"imap <silent> <C-l> <Esc>:set hlsearch<Enter>:set incsearch<Enter>:enew<Enter>:setlocal buftype=nofile<Enter>:set nobuflisted<Enter>:%!file_list<Enter><Esc>
+"map <C-k> :e **/*
+"imap <C-k> <Esc>:e **/*
+
+map <C-l> <Esc>:CtrlP<Enter>
 map <C-f> viw"xy<C-g><C-r>x -i<Enter>
 map <silent> <C-j> :norm gF<Enter>z.
-map <silent> <C-l> <Esc>:set hlsearch<Enter>:set incsearch<Enter>:enew<Enter>:setlocal buftype=nofile<Enter>:set nobuflisted<Enter>:%!file_list<Enter><Esc>
-imap <silent> <C-l> <Esc>:set hlsearch<Enter>:set incsearch<Enter>:enew<Enter>:setlocal buftype=nofile<Enter>:set nobuflisted<Enter>:%!file_list<Enter><Esc>
 map <silent> <S-r> :%!beautify %<Enter>
 map <silent> <C-h> :set nohlsearch!<Enter>
 map <silent> <C-n> :set nonumber!<Enter>
 "map <silent> <C-m> :ju<Enter>
-map <M-q> <Esc>:bn<Enter>
-imap <A-q> <Esc>:bn<Enter>
-map <A-Q> <Esc>:bp<Enter><Enter>
-imap <A-Q> <Esc>:bp<Enter><Enter>
 map <C-x> :enew<Enter>:setlocal buftype=nofile<Enter>:%!
 map <C-g> <Esc>:enew<Enter>:setlocal buftype=nofile<Enter>:%:!file_search<Space>
 map <C-t> <Esc>:enew<Enter>:setlocal buftype=nofile<Enter>:%:!file_search<Space>'.only('<Enter><C-j>
@@ -90,13 +88,10 @@ let @t = '^wi.only'
 
 "search
 "map <silent> <C-i> :set nohls<CR>:let @/ = ""<CR>:set hls<CR>
-
-"goto
-
 "map <F9> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-map <F9> :enew<Enter>:%!grep -ir '<<<' app spec config<Enter>
-map <F11> :enew<Enter>:%!grep -ir '>>>' app spec config<Enter>
-map <F12> :e $MYVIMRC<Enter>
+"map <F9> :enew<Enter>:%!grep -ir '<<<' app spec config<Enter>
+"map <F11> :enew<Enter>:%!grep -ir '>>>' app spec config<Enter>
+"map <F12> :e $MYVIMRC<Enter>
 
 "hi Search ctermbg=DarkBlue ctermfg=White
 hi String	ctermfg=DarkGray		
@@ -105,6 +100,5 @@ hi LineNr ctermfg=DarkMagenta
 au InsertLeave * hi Cursor guibg=red
 au InsertEnter * hi Cursor guibg=green
 "hi Comment ctermfg=DarkGreen
-
 syn keyword Keyword self
 
