@@ -4,7 +4,7 @@
   ignore = dirty
 [submodule "bundle/vimproc"]
 	path = bundle/vimproc
-	url = http://github.com/Shougo/vimproc
+	url = http://github.com/Shougo/vimproc.git
   ignore = dirty
 [submodule "bundle/ansiesc"]
 	path = bundle/ansiesc
@@ -14,3 +14,6 @@
 	path = bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
   ignore = dirty
+[submodule "bundle/ctrlp"]
+	path = bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
