@@ -2,6 +2,7 @@ call pathogen#infect()
 call pathogen#helptags()
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
+let g:ctrlp_regexp = 1
 
 set hidden
 set number
@@ -71,6 +72,9 @@ endfunction
 "imap <silent> <C-l> <Esc>:set hlsearch<Enter>:set incsearch<Enter>:enew<Enter>:setlocal buftype=nofile<Enter>:set nobuflisted<Enter>:%!file_list<Enter><Esc>
 "map <C-k> :e **/*
 "imap <C-k> <Esc>:e **/*
+""map <C-t> <Esc>:enew<Enter>:setlocal buftype=nofile<Enter>:%:!file_search<Space>'.only('<Enter><C-j>
+"map <C-b> <Esc>:enew<Enter>:setlocal buftype=nofile<Enter>:%:!file_search<Space>'debugger'<Enter><C-j>
+"map <silent> <C-m> :ju<Enter>
 
 map <C-l> <Esc>:CtrlP<Enter>
 map <C-f> viw"xy<C-g><C-r>x -i<Enter>
@@ -78,12 +82,10 @@ map <silent> <C-j> :norm gF<Enter>z.
 map <silent> <S-r> :%!beautify %<Enter>
 map <silent> <C-h> :set nohlsearch!<Enter>
 map <silent> <C-n> :set nonumber!<Enter>
-"map <silent> <C-m> :ju<Enter>
+map <Tab> <C-w><C-w>
 map <C-x> :enew<Enter>:setlocal buftype=nofile<Enter>:%!
 map <C-g> <Esc>:enew<Enter>:setlocal buftype=nofile<Enter>:%:!file_search<Space>
-map <C-t> <Esc>:enew<Enter>:setlocal buftype=nofile<Enter>:%:!file_search<Space>'.only('<Enter><C-j>
-map <C-b> <Esc>:enew<Enter>:setlocal buftype=nofile<Enter>:%:!file_search<Space>'debugger'<Enter><C-j>
-map <C-e> <Esc>:new<Enter>:VimShell<Enter>
+map <C-k> <Esc>:new<Enter>:VimShell<Enter>
 let @t = '^wi.only'
 
 "search
