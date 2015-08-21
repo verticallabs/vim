@@ -1,9 +1,14 @@
 call pathogen#infect()
 call pathogen#helptags()
 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*.js.html,*/keatonrow/*/build/*.js,*.orig
 let g:ctrlp_regexp = 1
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_match_window = 'max:20,results:20'
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
+set paste
 set hidden
 set number
 set tabstop=2
@@ -25,9 +30,14 @@ set smartcase
 set path=.,/usr/include,**
 set directory=/tmp
 set nocompatible
-"set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 set noerrorbells visualbell t_vb=
 set nofoldenable
+set backupcopy=yes
+set nobackup
+set nowritebackup
+set noswapfile
+set noundofile
 
 if exists('&undofile')
   set undofile
@@ -41,6 +51,7 @@ filetype plugin on
 filetype plugin indent on
 au BufNewFile,BufRead *.md set filetype=text
 au BufNewFile,BufRead *.js set filetype=javascript
+au BufNewFile,BufRead *.ejs set filetype=html
 au! BufWritePost vimrc so %
 au! BufWritePost .vimrc so %
 
@@ -76,16 +87,19 @@ endfunction
 "map <C-b> <Esc>:enew<Enter>:setlocal buftype=nofile<Enter>:%:!file_search<Space>'debugger'<Enter><C-j>
 "map <silent> <C-m> :ju<Enter>
 
+map <C-S-c> :let @+ = expand("%")<Enter>
 map <C-l> <Esc>:CtrlP<Enter>
-map <C-f> viw"xy<C-g><C-r>x -i<Enter>
+map <C-f> "xy<C-g>'<C-r>x'<Enter>
 map <silent> <C-j> :norm gF<Enter>z.
 map <silent> <S-r> :%!beautify %<Enter>
 map <silent> <C-h> :set nohlsearch!<Enter>
 map <silent> <C-n> :set nonumber!<Enter>
-map <Tab> <C-w><C-w>
+"map <Tab> <C-w><C-w>
 map <C-x> :enew<Enter>:setlocal buftype=nofile<Enter>:%!
 map <C-g> <Esc>:enew<Enter>:setlocal buftype=nofile<Enter>:%:!file_search<Space>
-map <C-k> <Esc>:new<Enter>:VimShell<Enter>
+"map <C-k> <Esc>:new<Enter>:VimShell<Enter>
+map <C-E> <Esc>:AnsiEsc<Enter>
+"map <S-5> :!"echo % | pbcopy"<Enter>
 let @t = '^wi.only'
 
 "search
@@ -103,4 +117,9 @@ au InsertLeave * hi Cursor guibg=red
 au InsertEnter * hi Cursor guibg=green
 "hi Comment ctermfg=DarkGreen
 syn keyword Keyword self
+
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
