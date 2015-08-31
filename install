@@ -8,3 +8,6 @@ ln -s $DIR/vimrc ~/.vimrc
 
 cd $DIR/bundle/vimproc && make
 cd $DIR
+
+#git submodule update --init --recursive
+cd $DIR/bundle/ycm && ./install.sh --clang-completer

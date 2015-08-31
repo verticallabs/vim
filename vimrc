@@ -99,7 +99,7 @@ map <C-x> :enew<Enter>:setlocal buftype=nofile<Enter>:%!
 map <C-g> <Esc>:enew<Enter>:setlocal buftype=nofile<Enter>:%:!file_search<Space>
 "map <C-k> <Esc>:new<Enter>:VimShell<Enter>
 map <C-E> <Esc>:AnsiEsc<Enter>
-"map <S-5> :!"echo % | pbcopy"<Enter>
+map <silent> <S-n> :!echo % <bar> krgh<Enter>
 let @t = '^wi.only'
 
 "search
