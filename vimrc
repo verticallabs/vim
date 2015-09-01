@@ -8,7 +8,7 @@ let g:ctrlp_match_window = 'max:20,results:20'
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 
-set paste
+"set paste
 set hidden
 set number
 set tabstop=2
@@ -69,6 +69,8 @@ function! FindInFiles(query, paths)
   :silent execute '%!file_search a:query a:paths'
 endfunction
 
+" COMMANDS **********************************************************************
+
 ":command! -nargs=1 Grep :!grep -ir <args> app lib
 :command! -nargs=1 Grep :call FindInFiles("<args>", "app lib config")
 :command! -nargs=1 GrepAll :call FindInFiles("<args>", '.')
@@ -108,6 +110,8 @@ let @t = '^wi.only'
 "map <F9> :enew<Enter>:%!grep -ir '<<<' app spec config<Enter>
 "map <F11> :enew<Enter>:%!grep -ir '>>>' app spec config<Enter>
 "map <F12> :e $MYVIMRC<Enter>
+
+" COLORS **********************************************************************
 
 "hi Search ctermbg=DarkBlue ctermfg=White
 hi String	ctermfg=DarkGray		
