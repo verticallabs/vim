@@ -16,3 +16,9 @@
 [submodule "bundle/ycm"]
 	path = bundle/ycm
 	url = https://github.com/Valloric/YouCompleteMe
+[submodule "bundle/matchit"]
+	path = bundle/matchit
+	url = https://github.com/tmhedberg/matchit
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = https://github.com/tpope/vim-surround

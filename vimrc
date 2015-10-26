@@ -11,9 +11,9 @@ let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 "set paste
 set hidden
 set number
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 set backspace=indent,eol,start
 set nowrap
@@ -101,7 +101,7 @@ map <C-x> :enew<Enter>:setlocal buftype=nofile<Enter>:%!
 map <C-g> <Esc>:enew<Enter>:setlocal buftype=nofile<Enter>:%:!file_search<Space>
 "map <C-k> <Esc>:new<Enter>:VimShell<Enter>
 map <C-E> <Esc>:AnsiEsc<Enter>
-map <silent> <S-n> :!echo % <bar> krgh<Enter>
+map <silent> <C-y> :!krgh %<Enter>
 let @t = '^wi.only'
 
 "search
